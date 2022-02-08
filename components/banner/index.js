@@ -1,7 +1,6 @@
 import React from 'react';
 import bannerimage  from '../../assets/images/home_banner.png';
 
-// import 'bootstrap/dist/css/bootstrap.min.css'
 import {Container,Row,Col,Navbar,Nav} from 'react-bootstrap'
 
 const index = () => {

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {Container,Row,Col,Navbar,Nav,NavbarBrand,Collapse,NavItem,NavLink} from 'react-bootstrap'
 import clientlogo from '../../assets/images/logo.png';
-
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Container,Row,Col,Navbar,Nav} from 'react-bootstrap'
-
 
 const index = () => {
+
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
+
   return (
     <>
       <header className="header_outer">
