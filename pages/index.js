@@ -6,7 +6,7 @@ import HeaderComponent from '../components/header'
 import BannerComponent from '../components/banner'
 import FooterComponent from '../components/footer'
 
-import {Container,Row,Col,Navbar,Nav} from 'react-bootstrap'
+// import {Container,Row,Col,Navbar,Nav} from 'react-bootstrap'
 
 export default function Home() {
   return (
