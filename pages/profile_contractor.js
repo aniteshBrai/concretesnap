@@ -1,8 +1,8 @@
 import React from 'react';
-import ProfileControctor from '../components/profile_contractor'
+import ProfileContractor from '../components/profile_contractor'
 
 const profile_contractor = () => {
-  return <ProfileControctor/>;
+  return <ProfileContractor/>;
 };
 
 export default profile_contractor;
