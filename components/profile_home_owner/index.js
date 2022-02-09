@@ -1,6 +1,15 @@
 import React from 'react';
 import {Container, Row, Col, Navbar, Nav} from 'react-bootstrap'
 import {Formik, Field, Form} from 'formik';
+import * as Yup from 'yup';
+
+const schema = Yup.object().shape({    
+    first_name: Yup.string().required(), 
+    last_name: Yup.string().required(),
+    email_address: Yup.string().required().email('Invalid email format'),     
+    phone_number: Yup.string().required(),    
+  });
+
 
 
 const index = () => {
@@ -8,6 +17,7 @@ const index = () => {
         <Container>
             <h1>Profile Home Owner</h1>
             <Formik
+                validationSchema={schema}
                 initialValues={{
                     first_name: '',
                     last_name: '',
@@ -16,13 +26,6 @@ const index = () => {
                 }}
                 validate={values => {
                     const errors = {};
-                    if (!values.email_address) {
-                        errors.email_address = 'Required';
-                    } else if (
-                        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email_address)
-                    ) {
-                        errors.email = 'Invalid email address';
-                    }
                     return errors;
                 }}
 
@@ -47,7 +50,7 @@ const index = () => {
                         <Row>
                             <Col sm={6}>
                                 <div className="form-group">
-                                    <label htmlFor="email" classname="form-label">First Name</label>
+                                    <label htmlFor="email" className="form-label">First Name</label>
                                     <input type="text" name="first_name" onChange={handleChange} onBlur={handleBlur}
                                            value={values.first_name} placeholder="Enter First Name"
                                            className="form-control"/>
@@ -56,7 +59,7 @@ const index = () => {
                             </Col>
                             <Col sm={6}>
                                 <div className="form-group">
-                                    <label htmlFor="email" classname="form-label">Last Name</label>
+                                    <label htmlFor="email" className="form-label">Last Name</label>
                                     <input type="text" name="last_name" onChange={handleChange} onBlur={handleBlur}
                                            value={values.last_name} placeholder="Enter Last Name"
                                            className="form-control"/>
@@ -68,7 +71,7 @@ const index = () => {
                             <Col sm={6}>
                                 <div className="form-group">
 
-                                    <label htmlFor="email_address" classname="form-label">Email Address</label>
+                                    <label htmlFor="email_address" className="form-label">Email Address</label>
                                     <input type="email" name="email_address" onChange={handleChange}
                                            onBlur={handleBlur} value={values.email_address}
                                            placeholder="Enter email address" className="form-control"/>
@@ -77,7 +80,7 @@ const index = () => {
                             </Col>
                             <Col sm={6}>
                                 <div className="form-group">
-                                    <label htmlFor="phone_number" classname="form-label">Phone Number</label>
+                                    <label htmlFor="phone_number" className="form-label">Phone Number</label>
                                     <input type="text" name="phone_number" onChange={handleChange}
                                            onBlur={handleBlur} value={values.phone_number}
                                            placeholder="Enter Phone Number" className="form-control"

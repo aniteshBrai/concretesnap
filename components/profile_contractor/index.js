@@ -1,12 +1,28 @@
 import React from 'react';
 import {Container, Row, Col, Navbar, Nav} from 'react-bootstrap';
 import {Formik, Field} from 'formik';
+import * as Yup from 'yup';
+
+const schema = Yup.object().shape({    
+    business_name: Yup.string().required(), 
+    website: Yup.string().required(),
+    email_address: Yup.string().required().email('Invalid email format'),     
+    phone_number: Yup.string().required(),    
+    business_address: Yup.string().required(),
+    state: Yup.string().required(),
+    city: Yup.string().required(),
+    zip_code: Yup.string().required(),    
+    brand_color: Yup.string().required(),    
+    currency: Yup.string().required(),
+  });
+
 
 const index = () => {
     return <div>
         <Container>
             <h1>Profile Controctor</h1>
             <Formik
+                validationSchema={schema}
                 initialValues={{
                     business_name: '',
                     website: '',
@@ -15,17 +31,12 @@ const index = () => {
                     business_address: '',
                     state: '',
                     city: '',
-                    zip_code: ''
+                    zip_code: '',
+                    brand_color:'',
+                    currency:''
                 }}
                 validate={values => {
-                    const errors = {};
-                    if (!values.email_address) {
-                        errors.email_address = 'Required';
-                    } else if (
-                        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email_address)
-                    ) {
-                        errors.email = 'Invalid email address';
-                    }
+                    const errors = {};                    
                     return errors;
                 }}
 
@@ -50,7 +61,7 @@ const index = () => {
                         <Row>
                             <Col sm={6}>
                                 <div className="form-group">
-                                    <label htmlFor="business_name" classname="form-label">Business Name</label>
+                                    <label htmlFor="business_name" className="form-label">Business Name</label>
                                     <input type="text" name="business_name" onChange={handleChange} onBlur={handleBlur}
                                            value={values.business_name} placeholder="Enter Business Name"
                                            className="form-control"/>
@@ -59,7 +70,7 @@ const index = () => {
                             </Col>
                             <Col sm={6}>
                                 <div className="form-group">
-                                    <label htmlFor="phone_number" classname="form-label">Phone Number</label>
+                                    <label htmlFor="phone_number" className="form-label">Phone Number</label>
                                     <input type="text" name="phone_number" onChange={handleChange} onBlur={handleBlur}
                                            value={values.phone_number} placeholder="Enter Phone Number"
                                            className="form-control"/>
@@ -71,7 +82,7 @@ const index = () => {
                         <Row>
                             <Col sm={6}>
                                 <div className="form-group">
-                                    <label htmlFor="email_address" classname="form-label">Email Address</label>
+                                    <label htmlFor="email_address" className="form-label">Email Address</label>
                                     <input type="email" name="email_address" onChange={handleChange} onBlur={handleBlur}
                                            value={values.email_address} placeholder="Enter email address"
                                            className="form-control"/>
@@ -80,11 +91,11 @@ const index = () => {
                             </Col>
                             <Col sm={6}>
                                 <div className="form-group">
-                                    <label htmlFor="business_address" classname="form-label">Business Address</label>
+                                    <label htmlFor="business_address" className="form-label">Business Address</label>
                                     <input type="text" name="business_address" onChange={handleChange}
                                            onBlur={handleBlur}
                                            value={values.business_address} placeholder="Enter Business Address"
-                                           required className="form-control"/>
+                                           className="form-control"/>
                                     {errors.business_address && touched.business_address && errors.business_address}
                                 </div>
                             </Col>
@@ -93,7 +104,7 @@ const index = () => {
                         <Row>
                             <Col sm={6}>
                                 <div className="form-group">
-                                    <label htmlFor="state" classname="form-label">Color</label>
+                                    <label htmlFor="state" className="form-label">Color</label>
                                     <select name="state" value={values.state} onChange={handleChange}
                                             onBlur={handleBlur} className="form-control">
                                         <option value="" label="Select a state"/>
@@ -107,9 +118,9 @@ const index = () => {
                             </Col>
                             <Col sm={6}>
                                 <div className="form-group">
-                                    <label htmlFor="city" classname="form-label">City</label>
+                                    <label htmlFor="city" className="form-label">City</label>
                                     <input type="text" name="city" onChange={handleChange} onBlur={handleBlur}
-                                           value={values.city} placeholder="Enter City" required
+                                           value={values.city} placeholder="Enter City" 
                                            className="form-control"/>
                                     {errors.city && touched.city && errors.city}
                                 </div>
@@ -118,18 +129,18 @@ const index = () => {
                         <Row>
                             <Col sm={6}>
                                 <div className="form-group">
-                                    <label htmlFor="zip_code" classname="form-label">Zip Code</label>
+                                    <label htmlFor="zip_code" className="form-label">Zip Code</label>
                                     <input type="text" name="zip_code" onChange={handleChange} onBlur={handleBlur}
-                                           value={values.zip_code} placeholder="Enter Zip Code" required
+                                           value={values.zip_code} placeholder="Enter Zip Code" 
                                            className="form-control"/>
                                     {errors.zip_code && touched.zip_code && errors.zip_code}
                                 </div>
                             </Col>
                             <Col sm={6}>
                                 <div className="form-group">
-                                    <label htmlFor="brand_color" classname="form-label">Brand Color</label>
+                                    <label htmlFor="brand_color" className="form-label">Brand Color</label>
                                     <input type="text" name="brand_color" onChange={handleChange} onBlur={handleBlur}
-                                           value={values.brand_color} placeholder="Enter Brand Color" required
+                                           value={values.brand_color} placeholder="Enter Brand Color" 
                                            className="form-control"/>
                                     {errors.brand_color && touched.brand_color && errors.brand_color}
                                 </div>
@@ -138,7 +149,7 @@ const index = () => {
                         <Row>
                             <Col sm={6}>
                                 <div className="form-group">
-                                    <label htmlFor="currency" classname="form-label">Currency</label>
+                                    <label htmlFor="currency" className="form-label">Currency</label>
                                     <select name="currency" value={values.currency} onChange={handleChange}
                                             onBlur={handleBlur} className="form-control">
                                         <option value="" label="Select a currency"/>

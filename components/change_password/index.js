@@ -1,12 +1,21 @@
 import React from 'react';
 import {Container, Row, Col, Navbar, Nav} from 'react-bootstrap';
 import {Formik, Field, Form} from 'formik';
+import * as Yup from 'yup';
+
+const schema = Yup.object().shape({    
+    old_password: Yup.string().required().min(8, 'Password must be at least 8 characters'),
+    new_password: Yup.string().required().min(8, 'Password must be at least 8 characters'),
+    confirm_password: Yup.string().required().min(8, 'Password must be at least 8 characters')
+    .oneOf([Yup.ref('new_password')], 'Confirm Passwords must match New Password')    
+  });
 
 const index = () => {
     return <div>
         <Container>
             <h1>Change Password</h1>
             <Formik
+                validationSchema={schema}
                 initialValues={{
                     old_password: '',
                     new_password: '',
@@ -38,7 +47,7 @@ const index = () => {
                         <Row>
                             <Col sm={12}>
                                 <div className="form-group">
-                                    <label htmlFor="old_password" classname="form-label">Old assword</label>
+                                    <label htmlFor="old_password" className="form-label">Old assword</label>
                                     <input
                                         type="password"
                                         name="old_password"
@@ -55,7 +64,7 @@ const index = () => {
                         <Row>
                             <Col sm={12}>
                                 <div className="form-group">
-                                    <label htmlFor="new_password" classname="form-label">New Password</label>
+                                    <label htmlFor="new_password" className="form-label">New Password</label>
                                     <input
                                         type="password"
                                         name="new_password"
@@ -73,7 +82,7 @@ const index = () => {
                             <Col sm={12}>
                                 <div className="form-group">
 
-                                    <label htmlFor="confirm_password" classname="form-label">Confirm Password</label>
+                                    <label htmlFor="confirm_password" className="form-label">Confirm Password</label>
                                     <input
                                         type="password"
                                         name="confirm_password"
