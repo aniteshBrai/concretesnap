@@ -436,13 +436,14 @@ header.header_outer {
   display: inline-block;
 }
 .from_contentblock {
-  padding: 60px 0px 15px;
+  padding: 30px 0px 60px;
 }
 h2.from_title {
   text-align: center;
   font-weight: 600;
   font-size: 30px;
-  padding-bottom: 22px;
+  padding-bottom: 30px;
+  margin: 0px;
 }
 .from_row {
   display: flex;
@@ -454,19 +455,80 @@ h2.from_title {
 .inp_from2{
   flex: 1;
 }
-.inp_text {
-  background: #F7F7F7;
-  border: 1px solid #F7F7F7;
-  outline: 0px;
-  width: 100%;
-  padding: 14px;
-  color: #A8A8A8;
+.inp_text,.form-control {
+  background: #FDFDFD !important;
+  /* border: 1px solid #F7F7F7 !important; */
+  border: 1px solid #C1C1C1!important;
+  outline: 0px !important;
+  width: 100% !important;
+  padding: 14px !important;
+  color: #A8A8A8 !important;
+  box-shadow: 0px 0px 0px  !important;
+  font-size: 18px !important;
 }
-.textareainfo textarea.inp_text {
+
+.contactinfo .inp_text{
+  border: 1px solid #F7F7F7 !important;
+}
+.inp_from label,.form-control label {
+  color: #223745;
+  font-size: 18px;
+  padding-bottom: 6px;
+}
+.def_cont_center{
+  text-align: center;
+  color: #4F4F4F;
+  font-size: 18px;
+}
+.def_cont_center span{
+  text-align: center;
+  color: #4F4F4F;
+  cursor: pointer;
+}
+.textareainfo textarea.inp_text, textarea.form-control {
   height: 100px;
 }
+.logincontent h2.from_title {
+  padding-bottom: 15px;
+}
+.registration_content h2.from_title {
+  padding-bottom: 15px;
+}
+.def_from_btn .def_btn{
+  padding: 12px 35px;
+}
+.linkopt{
+  color:#BF2227;
+  cursor: pointer;
+}
+.modf_opt{
+  padding-top: 15px;
+}
+.modf_opt strong{
+  padding-top: 15px;
+}
+p.error {
+  margin: 0px;
+  color:#BF2227
+}
+p.inp_desc_cont {
+  color: #D1D1D1;
+  font-size: 20px;
+  text-align: center;
+  padding: 0px 0px 24px;
+  margin: 0px;
+}
+.def_from_btn {
+  padding-top: 15px;
+}
+.modf_cont_block {
+  border: 1px solid #C1C1C1;
+  padding: 32px;
+  margin: 60px auto 20px;
+  max-width: 636px;
+}
 .inp_from {
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 }
 .inp_from2{
   margin-bottom: 10px;
@@ -615,6 +677,91 @@ li.des {
 
     flex-wrap: wrap;
 }
+
+.registration_content {
+  max-width: 1000px;
+}
+.rediotab_opt_wrap {
+  text-align: center;
+  padding-bottom: 22px;
+  color: #223745;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+}
+.rediotab_opt_wrap label {
+  padding: 0px 5px;
+  color: #223745;
+}
+.labeltitle  {
+  padding: 0px 0px 0px 5px;
+  color: #888888;
+}
+.rediotab_opt_wrap input[type="radio"] {
+  margin: 0px 5px;
+}
+ 
+  
+
+/*  */
+
+
+.rediotab_opt [type="radio"]:checked,
+.rediotab_opt [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+.rediotab_opt [type="radio"]:checked + label,
+.rediotab_opt [type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    /* color: #658B8B; */
+}
+.rediotab_opt [type="radio"]:checked + label:before,
+.rediotab_opt [type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+.rediotab_opt [type="radio"]:checked + label:after,
+.rediotab_opt [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 11px;
+    height: 11px;;
+    background: #cc2027;
+    position: absolute;
+    top: 4px;
+    left: 5px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.rediotab_opt [type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+.rediotab_opt [type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.rediotab_opt [type="radio"]:checked + label:before{
+  border: 1px solid #cc2027 !important;
+}
+.labeltitle {
+  margin-right: 12px;
+}
 @media (max-width: 1199px) {
   
   .main_content_left h3 {
@@ -750,6 +897,12 @@ li.des {
 .pricingplan_opt ul {
   margin: 15px auto;
   max-width: 257px;
+}
+.inp_text,.form-control {
+  font-size: 16px !important;
+}
+.inp_from label {
+  font-size: 16px;
 }
 }
 @media (max-width: 768px) {

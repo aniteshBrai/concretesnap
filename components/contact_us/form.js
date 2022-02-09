@@ -5,7 +5,6 @@ import {Formik, Field, Form} from 'formik';
 const form = () => {
     return <div>
         <Container>
-            <h1>Send us Message</h1>
             <Formik
                 initialValues={{
                     name: '',
@@ -44,7 +43,7 @@ const form = () => {
                   }) => (
                     <form onSubmit={handleSubmit}>
 
-                        <Row>
+                        {/* <Row>
                             <Col sm={6}>
                                 <div className="form-group">
                                     <label htmlFor="name" classname="form-label">Name</label>
@@ -92,6 +91,57 @@ const form = () => {
                                 <button type="submit" disabled={isSubmitting} className="btn btn-primary">
                                     Submit
                                 </button>
+                            </Col>
+                        </Row> */}
+
+
+                        <Row>
+                            <Col md={12}>
+                                <div className='from_contentblock contactinfo'>
+                                    <h2 className='from_title' >Send Us Message</h2>
+                                    <div className='contact_from' >
+                                        <div className='from_row'>
+                                        <div className='inp_from'>
+                                                    <input type="text" name="name" onChange={handleChange} onBlur={handleBlur}
+                                                        value={values.name} placeholder="Enter Name" className="form-control inp_text"/>
+                                                    {errors.name && touched.name && errors.name}
+
+                                        </div>
+                                        <div className='inp_from'>
+                                                <input type="email" name="email_address" onChange={handleChange}
+                                                        onBlur={handleBlur} value={values.email_address}
+                                                        placeholder="Enter email address" className="form-control inp_text"
+                                                    />
+                                                    {errors.email_address && touched.email_address && errors.email_address}
+
+                                        </div>
+                                        <div className='inp_from'>
+                                                    <input type="text" name="subject" onChange={handleChange}
+                                                        onBlur={handleBlur} value={values.subject}
+                                                        placeholder="Enter Subject" className="form-control inp_text"
+                                                    />
+                                                    {errors.subject && touched.subject && errors.subject}
+                                        </div>
+                                        </div>
+                                        <div className='from_row'>
+                                        <div className='inp_from2 textareainfo'>
+                                            {/* <textarea value='' placeholder='Your Message*' className='inp_text '  /> */}
+                                                    <Field name="message" as="textarea" className="form-control inp_text"
+                                                        onChange={handleChange}
+                                                        onBlur={handleBlur} value={values.message}/>
+                                                    {errors.message && touched.message && errors.message}
+                                        </div>
+                                        </div>
+                                        <div className='def_from_btn'>
+                                            {/* <input type="submit" value="Send" className='def_btn' /> */}
+                                            <button type="submit" disabled={isSubmitting} className="def_btn">
+                                                    Submit
+                                                </button>
+                                        </div>
+
+    
+                                    </div>
+                                </div>
                             </Col>
                         </Row>
                     </form>
