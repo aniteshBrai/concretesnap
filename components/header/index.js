@@ -26,15 +26,15 @@ const index = () => {
                           <Navbar.Toggle aria-controls="basic-navbar-nav" />
                           <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
-                              <Nav.Link href="#About">About</Nav.Link>
-                              <Nav.Link href="#Pricing">Pricing</Nav.Link>
-                              <Nav.Link href="#link">Contact Us</Nav.Link>
+                              <Nav.Link href="/about_us">About</Nav.Link>
+                              <Nav.Link href="/pricing_plans">Pricing</Nav.Link>
+                              <Nav.Link href="/contact_us">Contact Us</Nav.Link>
                               <Nav.Link href="#link">Concrete Calculator</Nav.Link>
                               
                             </Nav>
                             <div className='login_option'>
-                              <Nav.Link href="#link">Login</Nav.Link>
-                              <Nav.Link href="#link">Register</Nav.Link>
+                              <Nav.Link href="/login">Login</Nav.Link>
+                              <Nav.Link href="/signup">Register</Nav.Link>
                             </div>
                           </Navbar.Collapse>
                         </Navbar>
