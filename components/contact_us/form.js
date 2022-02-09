@@ -113,7 +113,7 @@ const form = () => {
                                         <div className='inp_from'>
                                                     <input type="text" name="name" onChange={handleChange} onBlur={handleBlur}
                                                         value={values.name} placeholder="Enter Name" className="form-control inp_text"/>
-                                                    {errors.name && touched.name && errors.name}
+                                            <p className='error'> {errors.name && touched.name && errors.name}</p>
 
                                         </div>
                                         <div className='inp_from'>
@@ -121,7 +121,7 @@ const form = () => {
                                                         onBlur={handleBlur} value={values.email_address}
                                                         placeholder="Enter email address" className="form-control inp_text"
                                                     />
-                                                    {errors.email_address && touched.email_address && errors.email_address}
+                                            <p className='error'> {errors.email_address && touched.email_address && errors.email_address}</p>
 
                                         </div>
                                         <div className='inp_from'>
@@ -129,7 +129,7 @@ const form = () => {
                                                         onBlur={handleBlur} value={values.subject}
                                                         placeholder="Enter Subject" className="form-control inp_text"
                                                     />
-                                                    {errors.subject && touched.subject && errors.subject}
+                                            <p className='error'>{errors.subject && touched.subject && errors.subject}</p>
                                         </div>
                                         </div>
                                         <div className='from_row'>
@@ -138,7 +138,7 @@ const form = () => {
                                                     <Field name="message" as="textarea" className="form-control inp_text"
                                                         onChange={handleChange}
                                                         onBlur={handleBlur} value={values.message}/>
-                                                    {errors.message && touched.message && errors.message}
+                                            <p className='error'>{errors.message && touched.message && errors.message}</p>
                                         </div>
                                         </div>
                                         <div className='def_from_btn'>
