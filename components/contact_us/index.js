@@ -80,7 +80,7 @@ const index = () => {
                 </Row>
               </Container>
 
-              <Container>
+              {/* <Container>
                 <Row>
                   <Col md={12}>
                     <div className='from_contentblock'>
@@ -111,7 +111,7 @@ const index = () => {
                     </div>
                   </Col>
                 </Row>
-              </Container>
+              </Container> */}
           </div>
 
         </div>
