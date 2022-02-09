@@ -1,12 +1,12 @@
 import React from 'react';
-import PricingPlans from '../components/pricing_plans'
+import ProjectsPage from '../components/projectspage'
 import HeaderComponent from '../components/header'
 import FooterComponent from '../components/footer'
-const pricing_plans = () => {
+const projectspage = () => {
   return (
         <>
           <HeaderComponent/>
-          <PricingPlans/>                                                                     
+          <ProjectsPage/>          
           <FooterComponent/>
 
 
@@ -14,4 +14,4 @@ const pricing_plans = () => {
   );
 };
 
-export default pricing_plans;
+export default projectspage;
