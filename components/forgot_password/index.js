@@ -7,8 +7,26 @@ const schema = Yup.object().shape({
     email: Yup.string().required().email('Invalid email format'),    
   });
 
+import loginbanner  from '../../assets/images/loginbanner.png';
+
 const index = () => {
-    return <div>
+    return (
+    <>
+           <div className='banner_add innerbanner'> 
+                <div className='banner_panel'  style={{ backgroundImage: `url("${loginbanner.src}")` }} >
+                    <Container>
+                    <Row>
+                        <Col sm={12}>
+                            <div className='banner_cont'>
+                                <h2><span>FORGOT PASSWORD</span></h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit,</p>
+                            </div>
+                        </Col>
+                    </Row>
+                    </Container>   
+                </div>
+            </div>
+
         <Container>
             <h1>Forgot Password</h1>
             <Formik
@@ -61,7 +79,7 @@ const index = () => {
                 )}
             </Formik>
         </Container>
-    </div>;
+    </>);
 };
 
 export default index;
