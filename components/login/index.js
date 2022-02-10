@@ -109,7 +109,7 @@ const index = () => {
                                                 </div>
 
                                                 <div className='def_cont_center modf_opt'>
-                                                    Don’t have an account? <strong className='linkopt'>Register</strong>
+                                                    Don’t have an account? <a href='#'><strong className='linkopt'>Register</strong></a> 
                                                 </div>
                                             </div>
                                         </Col>
