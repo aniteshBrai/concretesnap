@@ -71,7 +71,7 @@ const index = () => {
                                                 <h2 className='from_title'>Login</h2>
                                                 <p className='inp_desc_cont'>Lorem ipsum dolor sit amet, consectetur</p>
                                                 <div className="form-group def_inp_text inp_from">
-                                                    <label htmlFor="email" className="form-label">Email Address</label>
+                                                    <label className="form-label">Email Address</label> 
                                                     <input
                                                         type="email"
                                                         name="email"

@@ -53,7 +53,7 @@ const index = () => {
             </div>
             <div className='main_content_wrap fromdetails'>
                 <div className='main_content_block'>
-                    <div className='from_contentblock modf_cont_block registration_content'>
+                    <div className='from_contentblock modf_cont_block from_width_lg'>
                         <Container>
                             {/* <h1>Register</h1> */}
                             <Formik

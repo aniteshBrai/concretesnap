@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import {Container,Row,Col,Navbar,Nav,NavbarBrand,Collapse,NavItem,NavLink} from 'react-bootstrap'
+import {Container,Row,Col,Navbar,Nav,NavbarBrand,Collapse,NavItem,NavLink, Dropdown} from 'react-bootstrap'
 import clientlogo from '../../assets/images/logo.png';
+import proFileimg  from '../../assets/images/prof_img.png';
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const index = () => {
@@ -32,10 +34,28 @@ const index = () => {
                               <Nav.Link href="#link">Concrete Calculator</Nav.Link>
                               
                             </Nav>
-                            <div className='login_option'>
+                            <div className='login_option deflogin' >
                               <Nav.Link href="/login">Login</Nav.Link>
                               <Nav.Link href="/signup">Register</Nav.Link>
                             </div>
+                            <div className='login_option iflogin'  style={{'display':'none' }} >
+                                <div className='prof_login_pic'>
+                                  <img src={proFileimg.src}  className="upload_pic" alt="Profile image" />
+                                </div>
+                                <div className='prof_login_des'>
+                                    <Dropdown>
+                                      <Dropdown.Toggle  id="dropdown-basic">
+                                          John Doe
+                                      </Dropdown.Toggle>
+                                      <Dropdown.Menu>
+                                        <Dropdown.Item href="#/action-1">Edit Profile</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-2">Change Password</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
+                                      </Dropdown.Menu>
+                                  </Dropdown>
+                                </div>
+                             
+                              </div>
                           </Navbar.Collapse>
                         </Navbar>
                       </div>
