@@ -30,7 +30,7 @@ const index = () => {
             <div className='main_content_wrap fromdetails'>
                 <div className='main_content_block'>
                     <Container>
-                        <h1>Login Form</h1>
+                        {/* <h1>Login Form</h1> */}
                         <Formik
                             validationSchema={schema}
                             initialValues={{email: '', password: ''}}

@@ -55,7 +55,7 @@ const index = () => {
                 <div className='main_content_block'>
                     <div className='from_contentblock modf_cont_block registration_content'>
                         <Container>
-                            <h1>Register</h1>
+                            {/* <h1>Register</h1> */}
                             <Formik
                                 validationSchema={schema}
                                 initialValues={{

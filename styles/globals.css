@@ -762,6 +762,10 @@ li.des {
 .labeltitle {
   margin-right: 12px;
 }
+
+.def_cont_center.modf_opt a {
+  text-decoration: none;
+}
 @media (max-width: 1199px) {
   
   .main_content_left h3 {
