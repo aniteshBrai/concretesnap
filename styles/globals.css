@@ -976,6 +976,7 @@ button.def_btn.btn.btn-primary {
   justify-content: space-between;
   font-size: 19px;
   margin: 30px 0 0;
+  font-weight: 600;
   border-radius: 0px 0px 10px 10px;
 }
 .cont_right h2.from_title {
@@ -983,6 +984,25 @@ button.def_btn.btn.btn-primary {
   padding: 30px 0 25px;
   margin: 0px;
 }
+
+.preloader_content {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  height: 100vh;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  text-align: center;
+}
+
+.preloader_content img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @media (max-width: 1199px) {
   
   .main_content_left h3 {
@@ -1017,7 +1037,30 @@ button.def_btn.btn.btn-primary {
 }
 }
 @media (max-width: 1000px) {
+  .cont_right .from_contentblock.modf_cont_block.from_width_lg {
+    margin: 0px 0 0 0;
+}
+  .def_from_btn {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+  .inp_from {
+    margin-bottom: 15px;
+}
+  .modf_cont_block {
+    padding: 15px 10px;
+    margin: 53px 15px 20px;
+}
+.modf_cont_block h2.from_title {
+  padding-bottom: 5px;
+}
+p.inp_desc_cont {
+  font-size: 17px
+}
+h2.from_title {
 
+  font-size: 22px;
+}
   div#basic-navbar-nav {
     position: absolute;
     right: 0px;
@@ -1125,6 +1168,10 @@ button.def_btn.btn.btn-primary {
 }
 }
 @media (max-width: 768px) {
+  .innerbanner .banner_cont h2 span {
+    font-size: 26px;
+    line-height: 26px;
+}
   .innerbanner .banner_cont p {
     font-size: 16px;
     line-height: 20px;

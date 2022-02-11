@@ -1,6 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import clientlogo from '../assets/images/logo.png';
+
+
 import HomeComponent from '../components/home'
 import HeaderComponent from '../components/header'
 import BannerComponent from '../components/banner'
@@ -20,7 +23,9 @@ export default function Home() {
       {/* <footer className={styles.footer}>
         <FooterComponent/>
       </footer>  */}
-      
+      {/* <div className='preloader_content'>
+        <img src={clientlogo.src}  alt="logo" />
+      </div> */}
       <HeaderComponent/>
       <BannerComponent/>
       <HomeComponent/>
