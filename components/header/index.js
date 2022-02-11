@@ -3,12 +3,21 @@ import { Container, Row, Col, Navbar, Nav, Dropdown } from "react-bootstrap";
 import clientlogo from "../../assets/images/logo.png";
 import proFileimg from "../../assets/images/prof_img.png";
 import Link from "next/link";
-
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { handleLogout } from "../../store/actions/authAction";
 
 const index = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
+  const dispatch = useDispatch();
+
+  const auth = useSelector((state) => state.auth);
+  const { isLoggedIn } = auth;
+
+  const Logout = () => {
+    dispatch(handleLogout);
+  };
 
   return (
     <>
@@ -34,8 +43,16 @@ const index = () => {
                         <Link href="#link">Concrete Calculator</Link>
                       </Nav>
                       <div className="login_option deflogin">
-                        <Link href="/login">Login</Link>
-                        <Link href="/signup">Register</Link>
+                        {/* {JSON.stringify(isLoggedIn)} */}
+                        {isLoggedIn && <Link href="/logout">Logout</Link>}
+
+                        {!isLoggedIn && (
+                          <>
+                            <Link href="/login">Login</Link>
+
+                            <Link href="/signup">Register</Link>
+                          </>
+                        )}
                       </div>
                       <div
                         className="login_option iflogin"

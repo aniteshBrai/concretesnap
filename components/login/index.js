@@ -4,6 +4,9 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import loginbanner from "../../assets/images/loginbanner.png";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect, useCallback } from "react";
+import { handleLogin } from "../../store/actions/authAction";
 
 const schema = Yup.object().shape({
   email: Yup.string().required().email("Invalid email format"),
@@ -13,6 +16,9 @@ const schema = Yup.object().shape({
 });
 
 const index = () => {
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
+
   return (
     <>
       <div className="banner_add innerbanner">
@@ -40,26 +46,16 @@ const index = () => {
       <div className="main_content_wrap fromdetails">
         <div className="main_content_block">
           <Container>
-            {/* <h1>Login Form</h1> */}
             <Formik
               validationSchema={schema}
               initialValues={{ email: "", password: "" }}
               validate={(values) => {
                 const errors = {};
-                /*if (!values.email) {
-                                    errors.email = 'Required';
-                                } else if (
-                                    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                                ) {
-                                    errors.email = 'Invalid email address';
-                                }*/
                 return errors;
               }}
-              onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  setSubmitting(false);
-                }, 400);
+              onSubmit={(values) => {
+                const { email, password } = values;
+                dispatch(handleLogin({ email, password }));
               }}
             >
               {({
