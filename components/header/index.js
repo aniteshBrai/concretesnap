@@ -28,9 +28,9 @@ const index = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                       <Nav className="mr-auto">
-                        <Link href="/about_us">About</Link>
-                        <Link href="/pricing_plans">Pricing</Link>
-                        <Link href="/contact_us">Contact Us</Link>
+                        <Link href="/about-us">About</Link>
+                        <Link href="/pricing-plans">Pricing</Link>
+                        <Link href="/contact-us">Contact Us</Link>
                         <Link href="#link">Concrete Calculator</Link>
                       </Nav>
                       <div className="login_option deflogin">
