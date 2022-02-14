@@ -3,6 +3,8 @@ import {Container, Row, Col, Navbar, Nav} from 'react-bootstrap';
 import {Formik, Field, Form} from 'formik';
 import * as Yup from 'yup';
 import loginbanner from "../../assets/images/loginbanner.png";
+import { useDispatch, useSelector } from "react-redux";
+import { changePassword } from "../../store/actions/changePassword";
 
 const schema = Yup.object().shape({
     old_password: Yup.string().required().min(8, 'Password must be at least 8 characters'),
@@ -12,6 +14,7 @@ const schema = Yup.object().shape({
 });
 
 const index = () => {
+    const dispatch = useDispatch();
 
     return (
         <>
@@ -43,13 +46,17 @@ const index = () => {
                                 const errors = {};
                                 return errors;
                             }}
-
-                            onSubmit={(values, {setSubmitting}) => {
-                                setTimeout(() => {
-                                    alert(JSON.stringify(values, null, 2));
-                                    setSubmitting(false);
-                                }, 400);
+                            onSubmit={(values) => {
+                                const { old_password, new_password, confirm_password } = values;
+                                dispatch(changePassword({ old_password, new_password, confirm_password }));
                             }}
+
+                            // onSubmit={(values, {setSubmitting}) => {
+                            //     setTimeout(() => {
+                            //         alert(JSON.stringify(values, null, 2));
+                            //         setSubmitting(false);
+                            //     }, 400);
+                            // }}
                         >
                             {({
                                 values,

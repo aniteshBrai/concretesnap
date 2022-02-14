@@ -2,15 +2,19 @@ import React from 'react';
 import {Container, Row, Col, Navbar, Nav} from 'react-bootstrap';
 import {Formik, Field, Form} from 'formik';
 import * as Yup from 'yup';
+import { useDispatch, useSelector } from "react-redux";
+import { contactUs } from "../../store/actions/contactUs";
 
 const schema = Yup.object().shape({    
-    name: Yup.string().required(),    
-    email_address: Yup.string().required().email('Invalid email format'),
-    subject: Yup.string().required(),
-    message: Yup.string().required(),    
+    name: Yup.string().required('Name is a required field'),    
+    email_address: Yup.string().required('Email is a required field').email('Invalid email format'),
+    subject: Yup.string().required('Subject is a required field'),
+    message: Yup.string().required('Message is a required field'),    
   });
 
 const form = () => {
+    const dispatch = useDispatch();
+    const auth = useSelector((state) => state.auth);
     return <div>
         <Container>
             <Formik
@@ -32,13 +36,17 @@ const form = () => {
                     }*/
                     return errors;
                 }}
-
-                onSubmit={(values, {setSubmitting}) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 400);
+                onSubmit={(values) => {
+                    const { name, email_address, subject, message } = values;
+                    dispatch(contactUs({ name, email_address, subject, message }));
                 }}
+
+                // onSubmit={(values, {setSubmitting}) => {
+                //     setTimeout(() => {
+                //         alert(JSON.stringify(values, null, 2));
+                //         setSubmitting(false);
+                //     }, 400);
+                // }}
             >
                 {({
                       values,
