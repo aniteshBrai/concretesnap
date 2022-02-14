@@ -33,7 +33,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isLoggedIn: !!localStorage.getItem("token_key"),
-        token: action.payload.access_token,
+        token: action.payload,
         success: true,
         loading: false,
       };

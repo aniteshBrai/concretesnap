@@ -5,8 +5,11 @@ import { Formik, Field, Form } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
 import Link from "next/link";
+import { handleSignup } from "../../store/actions/authAction";
+import { useDispatch } from "react-redux";
 
 const index = () => {
+  const dispatch = useDispatch();
   const [show, setDivHandler] = useState(true);
   const typeChange = () => setDivHandler(!show);
 
@@ -159,10 +162,16 @@ const index = () => {
                 }}
                 enableReinitialize
                 onSubmit={(values, { setSubmitting }) => {
-                  setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    setSubmitting(false);
-                  }, 400);
+                  let owner = {
+                    homeOwner: show,
+                  };
+
+                  let allValues = {
+                    ...values,
+                    ...owner,
+                  };
+
+                  dispatch(handleSignup(allValues));
                 }}
               >
                 {({

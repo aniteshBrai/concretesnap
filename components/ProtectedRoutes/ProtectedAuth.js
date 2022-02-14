@@ -14,6 +14,7 @@ function ProtectedAuth({ children }) {
     if (isLoggedIn) {
       route.replace("/");
     } else {
+      route.replace("/login");
     }
   }, []);
 

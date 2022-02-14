@@ -43,8 +43,11 @@ const index = () => {
                         <Link href="#link">Concrete Calculator</Link>
                       </Nav>
                       <div className="login_option deflogin">
-                        {/* {JSON.stringify(isLoggedIn)} */}
-                        {isLoggedIn && <Link href="/logout">Logout</Link>}
+                        {isLoggedIn && (
+                          <Link suppressHydrationWarning href="/logout">
+                            Logout
+                          </Link>
+                        )}
 
                         {!isLoggedIn && (
                           <>
