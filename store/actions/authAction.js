@@ -34,8 +34,12 @@ export const handleLogin = (e) => async (dispatch, getState) => {
     if (token) {
       localStorage.setItem("token_key", token);
       console.log(toast);
-      toast.success(`Welcome user`);
-      location.reload();
+      toast.success(`Logged in successfully`);
+      Router.push("/");
+      dispatch({
+        type: AUTH_LOGIN,
+        payload: token,
+      });
     }
   } catch (error) {
     console.log(error);
@@ -49,9 +53,7 @@ export const handleLogin = (e) => async (dispatch, getState) => {
   }
 };
 export const handleLogout = (e) => async (dispatch) => {
-  alert("logout");
   localStorage.clear();
-  location.reload();
   dispatch({
     type: AUTH_LOGOUT,
     payload: "",
@@ -60,40 +62,78 @@ export const handleLogout = (e) => async (dispatch) => {
 
 export const handleSignup = (e) => async (dispatch) => {
   try {
-    var data = new FormData();
-    data.append("email", e.email);
-    data.append("password", e.password);
-    data.append("password_confirmation", e.confirmPassword);
-    data.append("first_name", e.firstName);
-    data.append("last_name", e.lastName);
-    data.append("mobile", e.mobileNumber);
-    data.append("captcha_token", e.captchatoken);
+    if (e.homeOwner) {
+      const {
+        first_name,
+        last_name,
+        email_address,
+        password,
+        confirm_password,
+        phone_number,
+      } = e;
+      var data = JSON.stringify({
+        firstname: first_name,
+        lastname: last_name,
+        phone: phone_number,
+        email: email_address,
+        password: password,
+        confirmpassword: confirm_password,
+        type: "home_owner",
+      });
+    } else {
+      const {
+        business_name,
+        business_address,
+        email_address,
+        password,
+        confirm_password,
+        state,
+        city,
+        zip_code,
+        phone_number,
+      } = e;
+      var data = JSON.stringify({
+        businessname: business_name,
+        email: email_address,
+        phone: phone_number,
+        businessaddress: business_address,
+        city: city,
+        state: state,
+        zip: zip_code,
+        password: password,
+        confirmpassword: confirm_password,
+        type: "contractor",
+      });
+    }
 
     var config = {
       method: "post",
-      url: `${process.env.REACT_APP_API_URL}/customer/register`,
+      url: `http://nodeserver.mydevfactory.com:5589/user/register`,
       headers: {
         "Content-Type": "application/json",
       },
       data: data,
     };
     const res = await axios(config);
-    toast.success(`Thank you for Registration `, {
-      toastId: "register",
-    });
-    const { token } = res.data.data;
-    localStorage.setItem("token_key", token);
-    dispatch({
-      type: AUTH_SIGNUP,
-      payload: res.data,
-    });
+
+    if (res.data.success) {
+      toast.success(`Thank you for Registration `, {
+        toastId: "register",
+      });
+      dispatch({
+        type: AUTH_SIGNUP,
+        payload: res.data,
+      });
+      Router.push("/");
+    }
   } catch (error) {
-    toast.error(error.response.data.error.common, {
-      onClose: () => location.reload(),
-    });
-    dispatch({
-      type: AUTH_SIGNUP_ERROR,
-      payload: error,
-    });
+    console.log(error);
+    // toast.error(error.response.data.error.common, {
+    //   onClose: () => location.reload(),
+    // });
+    // dispatch({
+    //   type: AUTH_SIGNUP_ERROR,
+    //   payload: error,
+    // });
   }
 };
