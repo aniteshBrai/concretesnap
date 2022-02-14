@@ -6,9 +6,11 @@
   export const changePassword = (e) => async (dispatch, getState) => {   
     try {
       var data = new FormData();
-      data.append("old_password", e.old_password);
-      data.append("new_password", e.new_password);
-      data.append("confirm_password", e.confirm_password);
+      data.append("currentpassword", e.old_password);
+      data.append("newpassword", e.new_password);
+      data.append("confirmnewpassword", e.confirm_password);
+
+
       
       let token = localStorage.getItem('token_key')
 
@@ -17,10 +19,11 @@
 
       var config = {
         method: "post",
-        url: `http://nodeserver.mydevfactory.com:5589/user/change-password?token=${token}`,
         headers: {
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
+        url: `http://nodeserver.mydevfactory.com:5589/user/change-password?token=${token}`,       
         data: data,
       };
       const res = await axios(config);

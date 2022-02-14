@@ -52,7 +52,7 @@ const index = () => {
         [Yup.ref("email_address")],
         "Confirm email address must match email address"
       ),
-    password: Yup.string()
+    password: Yup.string()        
       .required('Password is a required field')
       .min(8, "Password must be at least 8 characters"),
     confirm_password: Yup.string()
