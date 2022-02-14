@@ -3,20 +3,13 @@ import FormData from "form-data";
 import { toast } from "react-toastify";
 
 
-export const forgotPassword = (e) => async (dispatch, getState) => {
-  dispatch({
-    type: CHANGE_PASSWORD_START,
-  });
+export const forgotPassword = (e) => async (dispatch, getState) => {  
   try {
     var data = new FormData();
-    data.append("name", e.name);
-    data.append("email_address", e.email_address);
-    data.append("subject", e.subject);
-    data.append("message", e.message);
-
+    data.append("forgotemail", e.email);
     var config = {
       method: "post",
-      url: `http://nodeserver.mydevfactory.com:5589/user/login`,
+      url: `http://nodeserver.mydevfactory.com:5589/user/sendPasswordLink`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -25,12 +18,11 @@ export const forgotPassword = (e) => async (dispatch, getState) => {
     const res = await axios(config);
     const { token } = res.data;
 
-    if (token) {
-      localStorage.setItem("token_key", token);
-      console.log(toast);
-      toast.success(`Welcome user`);
-      location.reload();
-    }
+    if(res.data.success)
+      {
+        toast.success(`Success, Please check your email and reset your password`);
+      }
+  
   } catch (error) {
     console.log(error);      
   }

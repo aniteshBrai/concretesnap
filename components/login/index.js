@@ -9,9 +9,9 @@ import { useState, useEffect, useCallback } from "react";
 import { handleLogin } from "../../store/actions/authAction";
 
 const schema = Yup.object().shape({
-  email: Yup.string().required().email("Invalid email format"),
+  email: Yup.string().required('Email is a required field').email("Invalid email format"),
   password: Yup.string()
-    .required()
+    .required('Password is a required field')
     .min(8, "Password must be at least 8 characters"),
 });
 

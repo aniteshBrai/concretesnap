@@ -11,47 +11,49 @@ const index = () => {
   const typeChange = () => setDivHandler(!show);
 
   const homeSchema = Yup.object().shape({
-    first_name: Yup.string().required(),
-    last_name: Yup.string().required(),
-    email_address: Yup.string().required().email("Invalid email format"),
+    first_name: Yup.string().required('First name is a required field'),
+    last_name: Yup.string().required('Last name is a required field'),
+    email_address: Yup.string().required('Email address is a required field').email("Invalid email format"),
     confirm_email_address: Yup.string()
-      .required()
+      .required('Confirm email address is a required field')
       .email("Invalid email format")
       .oneOf(
         [Yup.ref("email_address")],
         "Confirm email address must match email address"
       ),
     password: Yup.string()
-      .required()
+      .required('Password is a required field')
       .min(8, "Password must be at least 8 characters"),
     confirm_password: Yup.string()
-      .required()
+      .required('Confirm passwordis a required field')
       .min(8, "Password must be at least 8 characters")
       .oneOf(
         [Yup.ref("password")],
         "Confirm Passwords must match New Password"
       ),
-    phone_number: Yup.string().required(),
+    phone_number: Yup.string().required('Phone number is a required field'),
   });
 
   const contractorSchema = Yup.object().shape({
-    business_name: Yup.string().required(),
-    state: Yup.string().required(),
-    city: Yup.string().required(),
-    zip_code: Yup.string().required(),
-    email_address: Yup.string().required().email("Invalid email format"),
+    business_name: Yup.string().required('Business name is a required field'),
+    phone_number: Yup.string().required('Phone number is a required field'),
+    business_address:Yup.string().required('Business address is a required field'),
+    state: Yup.string().required('State is a required field'),
+    city: Yup.string().required('City is a required field'),
+    zip_code: Yup.string().required('Zip code is a required field'),
+    email_address: Yup.string().required('Email address is a required field').email("Invalid email format"),
     confirm_email_address: Yup.string()
-      .required()
+      .required('Confirm email address is a required field')
       .email("Invalid email format")
       .oneOf(
         [Yup.ref("email_address")],
         "Confirm email address must match email address"
       ),
     password: Yup.string()
-      .required()
+      .required('Password is a required field')
       .min(8, "Password must be at least 8 characters"),
     confirm_password: Yup.string()
-      .required()
+      .required('Confirm passwordis a required field')
       .min(8, "Password must be at least 8 characters")
       .oneOf(
         [Yup.ref("password")],
@@ -527,7 +529,7 @@ const index = () => {
                           <Col sm={6}>
                             <div className="form-group def_inp_text inp_from">
                               <label htmlFor="state" className="form-label">
-                                Color
+                               State
                               </label>
                               <select
                                 name="state"

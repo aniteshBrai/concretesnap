@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { changePassword } from "../../store/actions/changePassword";
 
 const schema = Yup.object().shape({
-    old_password: Yup.string().required().min(8, 'Password must be at least 8 characters'),
-    new_password: Yup.string().required().min(8, 'Password must be at least 8 characters'),
-    confirm_password: Yup.string().required().min(8, 'Password must be at least 8 characters')
+    old_password: Yup.string().required('Old password is a required field').min(8, 'Password must be at least 8 characters'),
+    new_password: Yup.string().required('New password is a required field').min(8, 'Password must be at least 8 characters'),
+    confirm_password: Yup.string().required('Confirm password is a required field').min(8, 'Password must be at least 8 characters')
         .oneOf([Yup.ref('new_password')], 'Confirm Passwords must match New Password')
 });
 

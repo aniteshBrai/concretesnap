@@ -14,21 +14,25 @@
 
       var config = {
         method: "post",
-        url: `http://nodeserver.mydevfactory.com:5589/user/login`,
+        url: `http://nodeserver.mydevfactory.com:5589/user/contactus`,
         headers: {
           "Content-Type": "application/json",
         },
         data: data,
       };
       const res = await axios(config);
-      const { token } = res.data;
-  
-      if (token) {
-        localStorage.setItem("token_key", token);
-        console.log(toast);
-        toast.success(`Welcome user`);
-        location.reload();
+      console.log(res)
+      if(res.data.success==true)
+      {
+        toast.success(`Success`);
       }
+  
+      // if (token) {
+      //   localStorage.setItem("token_key", token);
+      //   console.log(toast);
+      //   toast.success(`Welcome user`);
+      //   location.reload();
+      // }
     } catch (error) {
       console.log(error);      
     }

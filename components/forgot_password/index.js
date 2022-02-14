@@ -2,12 +2,15 @@ import React from "react";
 import { Container, Row, Col, Navbar, Nav } from "react-bootstrap";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { forgotPassword } from "../../store/actions/forgotPassword";
 
 const schema = Yup.object().shape({
-  email: Yup.string().required().email("Invalid email format"),
+  email: Yup.string().required('Email is a required field').email("Invalid email format"),
 });
 
 const index = () => {
+  const dispatch = useDispatch();
   return (
     <>
       <div className="banner_add innerbanner">
@@ -42,12 +45,10 @@ const index = () => {
                 const errors = {};
                 return errors;
               }}
-              onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  setSubmitting(false);
-                }, 400);
-              }}
+              onSubmit={(values) => {
+                const { email } = values;
+                dispatch(forgotPassword({ email }));
+            }}
             >
               {({
                 values,

@@ -14,7 +14,6 @@ const schema = Yup.object().shape({
 
 const form = () => {
     const dispatch = useDispatch();
-    const auth = useSelector((state) => state.auth);
     return <div>
         <Container>
             <Formik
@@ -26,14 +25,7 @@ const form = () => {
                     message: ''
                 }}
                 validate={values => {
-                    const errors = {};
-                    /*if (!values.email) {
-                        errors.email = 'Required';
-                    } else if (
-                        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                    ) {
-                        errors.email = 'Invalid email address';
-                    }*/
+                    const errors = {};                  
                     return errors;
                 }}
                 onSubmit={(values) => {
