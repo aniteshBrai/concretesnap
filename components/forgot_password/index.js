@@ -4,7 +4,7 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { forgotPassword } from "../../store/actions/forgotPassword";
-
+import Link from "next/link";
 const schema = Yup.object().shape({
   email: Yup.string()
     .required("Email is a required field")
@@ -100,9 +100,9 @@ const index = () => {
                         </div>
 
                         <div className="def_cont_center modf_opt">
-                          <a href="#">
+                          <Link href="/login">
                             <strong className="linkopt">Login</strong>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </Col>
