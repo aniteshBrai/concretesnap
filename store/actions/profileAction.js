@@ -13,7 +13,7 @@ export const handleUserInfo = (e) => async (dispatch) => {
     var token = localStorage.getItem("token_key");
     var config = {
       method: "get",
-      url: `https://cors-anywhere.herokuapp.com/${process.env.NEXT_PUBLIC_API_URL}/user/get-user`,
+      url: `${process.env.NEXT_PUBLIC_API_URL}/user/get-user`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -52,7 +52,7 @@ export const updateUserInfo = (e, type) => async (dispatch) => {
 
     var config = {
       method: "post",
-      url: `https://cors-anywhere.herokuapp.com/${process.env.NEXT_PUBLIC_API_URL}/user/update-user`,
+      url: `${process.env.NEXT_PUBLIC_API_URL}/user/update-user`,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
