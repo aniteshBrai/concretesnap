@@ -1,6 +1,7 @@
 {
   "name": "concretesnap",
   "private": true,
+  "proxy": "https://nodeserver.mydevfactory.com:5589",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

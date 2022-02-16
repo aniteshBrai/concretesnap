@@ -4,3 +4,7 @@ export const AUTH_ERROR = "AUTH_ERROR";
 export const AUTH_LOGOUT = "AUTH_LOGOUT";
 export const AUTH_SIGNUP_ERROR = "AUTH_SIGNUP_ERROR";
 export const AUTH_SIGNUP = "AUTH_SIGNUP";
+export const GET_USER_INFO = "GET_USER_INFO";
+export const USER_INFO_ERROR = "USER_INFO_ERROR";
+export const USER_UPDATE_INFO_ERROR = "USER_UPDATE_INFO_ERROR";
+export const UPDATE_USER_INFO = "UPDATE_USER_INFO";

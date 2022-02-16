@@ -22,7 +22,7 @@ export const handleLogin = (e) => async (dispatch, getState) => {
 
     var config = {
       method: "post",
-      url: `http://nodeserver.mydevfactory.com:5589/user/login`,
+      url: `${process.env.NEXT_PUBLIC_API_URL}/user/login`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -33,23 +33,23 @@ export const handleLogin = (e) => async (dispatch, getState) => {
 
     if (token) {
       localStorage.setItem("token_key", token);
-      console.log(toast);
-      toast.success(`Logged in successfully`);
-      Router.push("/");
+      toast.success(`Logged in successfully`, {
+        onClose: () => Router.push("/"),
+      });
+
       dispatch({
         type: AUTH_LOGIN,
         payload: token,
       });
     }
   } catch (error) {
-    console.log(error);
-    // dispatch({
-    //   type: AUTH_ERROR,
-    //   payload: error.response.data.error.common,
-    // });
-    // toast.error(error.response.data.error.common, {
-    //   onClose: () => location.reload(),
-    // });
+    dispatch({
+      type: AUTH_ERROR,
+      payload: error.response.data,
+    });
+    toast.error(error.response.data, {
+      onClose: () => location.reload(),
+    });
   }
 };
 export const handleLogout = (e) => async (dispatch) => {
@@ -108,7 +108,7 @@ export const handleSignup = (e) => async (dispatch) => {
 
     var config = {
       method: "post",
-      url: `http://nodeserver.mydevfactory.com:5589/user/register`,
+      url: `${process.env.NEXT_PUBLIC_API_URL}/user/register`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -116,24 +116,28 @@ export const handleSignup = (e) => async (dispatch) => {
     };
     const res = await axios(config);
 
-    if (res.data.success) {
+    const { token } = res.data;
+
+    if (res.data.success && token) {
+      localStorage.setItem("token_key", token);
       toast.success(`Thank you for Registration `, {
         toastId: "register",
+        onClose: () => {
+          Router.push("/");
+        },
       });
       dispatch({
         type: AUTH_SIGNUP,
         payload: res.data,
       });
-      Router.push("/");
     }
   } catch (error) {
-    console.log(error);
-    // toast.error(error.response.data.error.common, {
-    //   onClose: () => location.reload(),
-    // });
-    // dispatch({
-    //   type: AUTH_SIGNUP_ERROR,
-    //   payload: error,
-    // });
+    toast.error(error.response.data, {
+      onClose: () => Router.push("/signup"),
+    });
+    dispatch({
+      type: AUTH_SIGNUP_ERROR,
+      payload: error,
+    });
   }
 };

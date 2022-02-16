@@ -6,7 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { forgotPassword } from "../../store/actions/forgotPassword";
 
 const schema = Yup.object().shape({
-  email: Yup.string().required('Email is a required field').email("Invalid email format"),
+  email: Yup.string()
+    .required("Email is a required field")
+    .email("Invalid email format"),
 });
 
 const index = () => {
@@ -45,10 +47,11 @@ const index = () => {
                 const errors = {};
                 return errors;
               }}
-              onSubmit={(values) => {
+              onSubmit={(values, { resetForm }) => {
                 const { email } = values;
                 dispatch(forgotPassword({ email }));
-            }}
+                resetForm();
+              }}
             >
               {({
                 values,
