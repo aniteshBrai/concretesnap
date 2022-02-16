@@ -31,17 +31,24 @@ export const handleUserInfo = (e) => async (dispatch) => {
     });
   }
 };
-export const updateUserInfo = (e) => async (dispatch) => {
+export const updateUserInfo = (e, type) => async (dispatch) => {
   try {
     var token = localStorage.getItem("token_key");
     var data = new FormData();
-    data.append("businessaddress", e.business_address);
-    data.append("phone", e.phone_number);
-    data.append("email", e.email);
-    data.append("state", e.state);
-    data.append("city", e.city);
-    data.append("zip", e.zip_code);
-    data.append("businessname", e.business_name);
+    if (type == "home_owner") {
+      data.append("firstname", e.first_name);
+      data.append("phone", e.phone_number);
+      data.append("email", e.email_address);
+      data.append("lastname", e.last_name);
+    } else {
+      data.append("businessaddress", e.business_address);
+      data.append("phone", e.phone_number);
+      data.append("email", e.email);
+      data.append("state", e.state);
+      data.append("city", e.city);
+      data.append("zip", e.zip_code);
+      data.append("businessname", e.business_name);
+    }
 
     var config = {
       method: "post",
